@@ -1,6 +1,5 @@
 import random
 class RandomGraphs:
-    # Salva um grafo no diretório arq
     def salvarGrafo(_self, grafo, arq):
         with open(arq, 'w') as file:
             for i in range(len(grafo)):
@@ -8,9 +7,6 @@ class RandomGraphs:
                     file.write(str(grafo[i][j]))
                 file.write("\n")
 
-    # Gera um grafo direcionado simples aleatório de n vértices
-    # p: probabilidade de dois vértices aleatórios possuírem uma aresta
-    # Retorna a matriz de adjacência do grafo gerado
     def grafoAleatorio(_self, n, p):
         grafo = [[]]*n
         for i in range(n):
@@ -23,7 +19,6 @@ class RandomGraphs:
 
         return grafo
     
-    # Gera um grafo direciona cíclico de n vértices
     def gerarGrafoCiclico(_self, n):
         grafo = []
         for i in range(n):
@@ -32,6 +27,5 @@ class RandomGraphs:
 
         return grafo
 
-    # Gera um grafo completo de n vértices
     def gerarGrafoCompleto(_self, n):
         return _self.grafoAleatorio(n, 1)

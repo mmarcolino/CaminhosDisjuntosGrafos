@@ -1,8 +1,6 @@
 import copy
 class GraphUtils:
-    # Busca em Largura
-    # Retorna True caso exista um caminho entre a origem e o destino
-    # Retorna False caso contrário
+
     def buscaLargura(_self, origem, destino, grafo, pai):
         visitado = [False] * len(grafo)
         fila = []
@@ -19,11 +17,6 @@ class GraphUtils:
 
         return visitado[destino]
 
-    # Busca em Profundidade
-    # Encontra todos os caminhos de um vértice origem à um destino
-    # Recursivo, não retorna nada
-    # Armazena todos os caminhos encontrados na lista "caminhos", 
-    # que deve ser passada como parâmetro na chamada inicial
     def buscaProfundidade(_self, origem, destino, grafo, visitado, caminho, caminhos):
         visitado[origem] = True
         caminho.append(origem)
@@ -38,7 +31,6 @@ class GraphUtils:
         caminho.pop()
         visitado[origem] = False
 
-    # Checa se existe algum elemento de l1 em l2
     def comp(_self, l1, l2):
         for i in l1:
             if i in l2:
@@ -46,8 +38,6 @@ class GraphUtils:
 
         return False
 
-    # Encontra um conjunto de caminhos disjuntos que possui o número
-    # máximo de caminhos disjuntos possíveis para o grafo
     def acharCaminhos(_self, origem, destino, grafo, n, cam_dis):
         visitado = [False] * len(grafo)
         caminho = []
@@ -84,13 +74,7 @@ class GraphUtils:
         print("acharCaminhos num: ", len(disjuntos))
         
         return []
-
-    # Executa o método de Edmonds-Karp para encontrar o fluxo-máximo do grafo
-    # Considerando a capacidade de cada aresta como 1, o fluxo-máximo é igual
-    # ao número máximo de caminhos disjuntos. Ao fim da função, passamos para 
-    # o método acharCaminho um subgrafo com apenas as arestas que possuem algum 
-    # fluxo passando por elas, o que reduz a complexidade do código em um grau 
-    # de magnitude
+    
     def caminhosDisjuntos(_self, origem, destino, g, cam_dis):
         grafo = copy.deepcopy(g)
         pai = [-1] * len(grafo)
@@ -117,7 +101,6 @@ class GraphUtils:
         
         return fluxo_maximo
             
-    # Lê um arquivo e retorna a matriz de adjacência
     def getGrafo(_self, arq):
         data = []
         file = open(arq, "r")
@@ -129,7 +112,6 @@ class GraphUtils:
         file.close()
         return data
 
-    # Imprime um grafo no console
     def printGrafo(_self, grafo):
         for i in grafo:
             for j in i:
@@ -137,7 +119,6 @@ class GraphUtils:
 
             print("")
 
-    # Compara dois grafos, mantendo uma aresta
     def difMatriz(_self, grafo, fluxo):
         g = copy.deepcopy(grafo)
         for i in range(len(g)):
